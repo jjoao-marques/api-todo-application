@@ -1,6 +1,7 @@
 package com.marques.projecttodo.Controller.exceptions;
 
 import com.marques.projecttodo.Messages.MessageUtil;
+import com.marques.projecttodo.services.exceptions.InvalidDate;
 import com.marques.projecttodo.services.exceptions.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,12 @@ public class ControllerExceptionHandler {
         for (FieldError x : e.getBindingResult().getFieldErrors()) {
             error.addErrors(x.getField(), x.getDefaultMessage());
         }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
+    @ExceptionHandler(InvalidDate.class)
+    public ResponseEntity<StandardError> invalidDate(InvalidDate e) {
+        StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 }

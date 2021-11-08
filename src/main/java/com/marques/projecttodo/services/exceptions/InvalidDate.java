@@ -1,9 +1,9 @@
 package com.marques.projecttodo.services.exceptions;
 
-public class ObjectNotFoundException extends  RuntimeException{
+public class InvalidDate extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
-    public ObjectNotFoundException (String msg) {
+    public InvalidDate (String msg) {
         super(msg);
     }
 }

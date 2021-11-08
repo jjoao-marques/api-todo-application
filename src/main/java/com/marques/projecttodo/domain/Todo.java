@@ -9,9 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
@@ -33,7 +32,7 @@ public class Todo implements Serializable {
     private String descricao;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date dataParaFinalizar;
+    private LocalDate dataParaFinalizar;
 
     private Boolean finalizado = false;
 }
